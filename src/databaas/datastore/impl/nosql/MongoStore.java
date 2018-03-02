@@ -10,7 +10,7 @@ public class MongoStore extends NosqlStore {
 	}
 
 	@Override
-	public DBType getDBType() {
+	public DBType getType() {
 		return DBType.MONGODB;
 	}
 

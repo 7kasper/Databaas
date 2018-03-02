@@ -18,8 +18,12 @@ public class Databaas {
 		return store;
 	}
 	
+	public DBConnect getConnect() {
+		return store.getConnect();
+	}
+	
 	public DBType getType() {
-		return store.getDBType();
+		return store.getType();
 	}
 	
 	

@@ -9,10 +9,22 @@ import databaas.datastore.impl.sql.SqliteStore;
 
 public interface DataStore {
 	
+	/**
+	 * @return the {@link DBConnect} belonging to this DataStore.
+	 */
 	public DBConnect getConnect();
 	
-	public DBType getDBType();
+	/**
+	 * @return the {@link DBType} belonging to this DataStore.
+	 */
+	public DBType getType();
 	
+	/**
+	 * Creates a new DataStore able to access {@link DBType} type using {@link DBConnect} connect
+	 * @param type
+	 * @param connect
+	 * @return the new DataStore implementation.
+	 */
 	public static DataStore bakeStore(DBType type, DBConnect connect) {
 		switch(type) {
 			case CASSANDRA:

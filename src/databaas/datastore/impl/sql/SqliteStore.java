@@ -10,7 +10,7 @@ public class SqliteStore extends SqlStore {
 	}
 
 	@Override
-	public DBType getDBType() {
+	public DBType getType() {
 		return DBType.SQLITE;
 	}
 
