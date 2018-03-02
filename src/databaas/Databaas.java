@@ -7,14 +7,20 @@ import databaas.datastore.DataStore;
 public class Databaas {
 	
 	DBConnect connect;
+	private DataStore store;
 	
 	public Databaas(DBType type, DBConnect connect) {
 		this.connect = connect;
+		this.store = DataStore.bakeStore(type, connect);
 	}
 	
-	private DataStore store;
+	public DataStore getStore() {
+		return store;
+	}
 	
 	public DBType getType() {
-		return type;
+		return store.getDBType();
 	}
+	
+	
 }
