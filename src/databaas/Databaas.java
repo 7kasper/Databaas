@@ -15,7 +15,7 @@ import databaas.datastore.database.impl.sql.sqlite.SqliteStore;
 public class Databaas {
 	
 	//Archive for DataStore access.
-	private static final Map<String, DataStore> datastores = new ConcurrentHashMap<String, DataStore>();
+	private static final Map<String, DataStore> datastores = new ConcurrentHashMap<String, DataStore>(1);
 	
 	//Archive for DataStore creation.
 	private static final Map<String, Function<PlaceInfo, DataStore>> storeSupplier = new HashMap<>();
