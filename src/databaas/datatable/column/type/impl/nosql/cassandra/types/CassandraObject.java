@@ -16,5 +16,10 @@ public class CassandraObject extends CassandraColumnType {
 	public Object toType() {
 		return obj;
 	}
+
+	@Override
+	public String getQueryName() {
+		return "blob";
+	}
 	
 }

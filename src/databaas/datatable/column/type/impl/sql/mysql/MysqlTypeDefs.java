@@ -3,13 +3,13 @@ package databaas.datatable.column.type.impl.sql.mysql;
 import java.util.function.Function;
 
 import databaas.datatable.column.type.ColumnType;
-import databaas.datatable.column.type.impl.DatabaseTypeDef;
+import databaas.datatable.column.type.impl.DatabaseTypeDefs;
 
-public class MysqlTypeDef extends DatabaseTypeDef {
+public class MysqlTypeDefs extends DatabaseTypeDefs {
 	
-	private static MysqlTypeDef typeDef = new MysqlTypeDef(); 
-	private MysqlTypeDef() { }
-	public static MysqlTypeDef get() { return typeDef; }
+	private static MysqlTypeDefs typeDef = new MysqlTypeDefs(); 
+	private MysqlTypeDefs() { }
+	public static MysqlTypeDefs get() { return typeDef; }
 	
 	@Override
 	public void init() {

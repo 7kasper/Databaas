@@ -2,7 +2,7 @@ package databaas.datatable.column.type;
 
 import java.util.function.Function;
 
-public interface TypeDef {
+public interface TypeDefs {
 	
 	public <T> void addTypeDef(Class<T> type, Class<? extends ColumnType> columnType, Function<T, ColumnType> columnTypeSupplier);
 	

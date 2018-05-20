@@ -2,12 +2,12 @@ package databaas.datastore.database.impl.sql.mysql;
 
 import databaas.dataplace.PlaceInfo;
 import databaas.datastore.database.impl.sql.SqlStore;
-import databaas.datatable.column.type.TypeDef;
-import databaas.datatable.column.type.impl.sql.mysql.MysqlTypeDef;
+import databaas.datatable.column.type.TypeDefs;
+import databaas.datatable.column.type.impl.sql.mysql.MysqlTypeDefs;
 
 public class MysqlStore extends SqlStore {
 	
-	TypeDef typeDef = MysqlTypeDef.get();
+	TypeDefs typeDefs = MysqlTypeDefs.get();
 	
 	public MysqlStore(PlaceInfo place) {
 		super(place);
@@ -19,8 +19,13 @@ public class MysqlStore extends SqlStore {
 	}
 
 	@Override
-	public TypeDef getTypeDef() {
-		return typeDef;
+	public TypeDefs getTypeDefs() {
+		return typeDefs;
+	}
+
+	@Override
+	public boolean validate() {
+		return false;
 	}
 
 }

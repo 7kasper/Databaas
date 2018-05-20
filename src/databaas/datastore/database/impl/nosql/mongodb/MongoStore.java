@@ -2,12 +2,12 @@ package databaas.datastore.database.impl.nosql.mongodb;
 
 import databaas.dataplace.PlaceInfo;
 import databaas.datastore.database.impl.nosql.NosqlStore;
-import databaas.datatable.column.type.TypeDef;
-import databaas.datatable.column.type.impl.nosql.mongodb.MongoTypeDef;
+import databaas.datatable.column.type.TypeDefs;
+import databaas.datatable.column.type.impl.nosql.mongodb.MongoTypeDefs;
 
 public class MongoStore extends NosqlStore {
 
-	TypeDef typeDef = MongoTypeDef.get();
+	TypeDefs typeDefs = MongoTypeDefs.get();
 	
 	public MongoStore(PlaceInfo place) {
 		super(place);	
@@ -19,8 +19,13 @@ public class MongoStore extends NosqlStore {
 	}
 
 	@Override
-	public TypeDef getTypeDef() {
-		return typeDef;
+	public TypeDefs getTypeDefs() {
+		return typeDefs;
+	}
+
+	@Override
+	public boolean validate() {
+		return false;
 	}
 
 }

@@ -2,12 +2,12 @@ package databaas.datastore.database.impl.nosql.cassandra;
 
 import databaas.dataplace.PlaceInfo;
 import databaas.datastore.database.impl.nosql.NosqlStore;
-import databaas.datatable.column.type.TypeDef;
-import databaas.datatable.column.type.impl.nosql.cassandra.CassandraTypeDef;
+import databaas.datatable.column.type.TypeDefs;
+import databaas.datatable.column.type.impl.nosql.cassandra.CassandraTypeDefs;
 
 public class CassandraStore extends NosqlStore {
 	
-	TypeDef typeDef = CassandraTypeDef.get();
+	TypeDefs typeDefs = CassandraTypeDefs.get();
 	
 	public CassandraStore(PlaceInfo place) {
 		super(place);
@@ -19,8 +19,13 @@ public class CassandraStore extends NosqlStore {
 	}
 	
 	@Override
-	public TypeDef getTypeDef() {
-		return typeDef;
+	public TypeDefs getTypeDefs() {
+		return typeDefs;
+	}
+
+	@Override
+	public boolean validate() {
+		return false;
 	}
 	
 }

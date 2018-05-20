@@ -2,12 +2,12 @@ package databaas.datastore.database.impl.sql.sqlite;
 
 import databaas.dataplace.PlaceInfo;
 import databaas.datastore.database.impl.sql.SqlStore;
-import databaas.datatable.column.type.TypeDef;
-import databaas.datatable.column.type.impl.sql.sqlite.SqliteTypeDef;
+import databaas.datatable.column.type.TypeDefs;
+import databaas.datatable.column.type.impl.sql.sqlite.SqliteTypeDefs;
 
 public class SqliteStore extends SqlStore {
 	
-	TypeDef typeDef = SqliteTypeDef.get();
+	TypeDefs typeDefs = SqliteTypeDefs.get();
 	
 	public SqliteStore(PlaceInfo place) {
 		super(place);
@@ -19,8 +19,13 @@ public class SqliteStore extends SqlStore {
 	}
 
 	@Override
-	public TypeDef getTypeDef() {
-		return typeDef;
+	public TypeDefs getTypeDefs() {
+		return typeDefs;
+	}
+
+	@Override
+	public boolean validate() {
+		return false;
 	}
 
 }

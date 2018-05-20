@@ -1,7 +1,7 @@
 package databaas.datastore;
 
 import databaas.dataplace.PlaceInfo;
-import databaas.datatable.column.type.TypeDef;
+import databaas.datatable.column.type.TypeDefs;
 
 public interface DataStore {
 	
@@ -16,9 +16,11 @@ public interface DataStore {
 	public PlaceInfo getConnect();
 	
 	/*
-	 * @return the TypeDef belonging to this DataStore.
+	 * @return the TypeDefs belonging to this DataStore.
 	 */
-	public TypeDef getTypeDef();
+	public TypeDefs getTypeDefs();
+
+	public boolean validate();
 	
 	//TODO: Continue :F
 	//public void createTable
