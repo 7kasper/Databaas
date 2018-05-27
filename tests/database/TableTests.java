@@ -5,6 +5,8 @@ import databaas.datastore.DataStore;
 import databaas.datatable.TableDef;
 import databaas.datatable.TableDefBuilder;
 import databaas.datatable.column.type.impl.nosql.cassandra.types.CassandraString;
+import databaas.dataplace.database.impl.DatabaseConnectPlace;
+import databaas.dataplace.database.impl.DatabaseDataPlace;;
 import junit.framework.TestCase;
 
 public class TableTests extends TestCase {
@@ -28,9 +30,8 @@ public class TableTests extends TestCase {
 	}
 	
 	public void testSqliteTable() {
-		DataStore table = Databaas.openStore("SQLITE", new DataBaseDataPlace());
-		table.validate();
-		table.getTypeDefs();
+		DataStore table = Databaas.openStore("SQLITE", new DatabaseDataPlace("Minecraft", new DatabaseConnectPlace("D:/Kasper/BeastnodeServer/Test/")));
+		assertTrue(table.validate());
 	}
 	
 }

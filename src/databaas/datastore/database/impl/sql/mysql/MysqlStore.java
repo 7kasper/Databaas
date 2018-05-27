@@ -6,9 +6,9 @@ import databaas.datatable.column.type.TypeDefs;
 import databaas.datatable.column.type.impl.sql.mysql.MysqlTypeDefs;
 
 public class MysqlStore extends SqlStore {
-	
+
 	TypeDefs typeDefs = MysqlTypeDefs.get();
-	
+
 	public MysqlStore(PlaceInfo place) {
 		super(place);
 	}

@@ -9,4 +9,6 @@ public interface ColumnType {
 		return (T) ((toType()));
 	}
 
+	public String getQueryName();
+
 }

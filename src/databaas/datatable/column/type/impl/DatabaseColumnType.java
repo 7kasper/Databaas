@@ -4,6 +4,4 @@ import databaas.datatable.column.type.ColumnType;
 
 public abstract class DatabaseColumnType implements ColumnType {
 
-	public abstract String getQueryName();
-
 }

@@ -6,7 +6,7 @@ import databaas.datastore.DataStore;
 
 public abstract class DatabaseStore implements DataStore {
 	
-	private final DatabasePlaceInfo place;
+	protected final DatabasePlaceInfo place;
 	
 	public DatabaseStore(PlaceInfo place) {
 		this.place = (DatabasePlaceInfo) place;

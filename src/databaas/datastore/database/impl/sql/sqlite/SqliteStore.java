@@ -1,5 +1,9 @@
 package databaas.datastore.database.impl.sql.sqlite;
 
+import java.sql.SQLException;
+
+import databaas.DatabaasLogger;
+import databaas.dataplace.NoPlaceException;
 import databaas.dataplace.PlaceInfo;
 import databaas.datastore.database.impl.sql.SqlStore;
 import databaas.datatable.column.type.TypeDefs;
@@ -25,6 +29,11 @@ public class SqliteStore extends SqlStore {
 
 	@Override
 	public boolean validate() {
+		try {
+			exec((con) -> {});
+		} catch (NoPlaceException | SQLException e) {
+			DatabaasLogger.log(e, "Error while executing sql function!");
+		}
 		return false;
 	}
 
