@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import databaas.datatable.column.ColumnDef;
+import databaas.datatable.column.option.ColumnOption;
 
 public class TableDefBuilder {
 	
@@ -15,8 +16,8 @@ public class TableDefBuilder {
 		return this;
 	}
 	
-	public TableDefBuilder addColumn(String name, Class<?> clazz) {
-		columns.add(new ColumnDef(name, clazz));
+	public TableDefBuilder addColumn(String name, Class<?> clazz, ColumnOption... options) {
+		columns.add(new ColumnDef(name, clazz, options));
 		return this;
 	}
 	

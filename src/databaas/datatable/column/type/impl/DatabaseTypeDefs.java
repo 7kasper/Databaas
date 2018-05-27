@@ -4,6 +4,8 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Function;
 
+import databaas.datatable.column.option.ColumnOption;
+import databaas.datatable.column.type.ColumnOptionType;
 import databaas.datatable.column.type.ColumnType;
 import databaas.datatable.column.type.TypeDefs;
 
@@ -14,10 +16,11 @@ public abstract class DatabaseTypeDefs implements TypeDefs {
 	protected final Map<Class<?>, Class<? extends ColumnType>> typeMap = new HashMap<>();
 	protected final Map<Class<? extends ColumnType>, Class<?>> columnTypeMap = new HashMap<>();
 	protected final Map<Class<?>, Function<Object, ColumnType>> typeSupplier = new HashMap<>();
-
-	public abstract void init();
+	protected final Map<Class<?>, Function<ColumnOption, ColumnOptionType>> optionSupplier = new HashMap<>();
 
 	public abstract Function<Object, ColumnType> getTypeSupplier(Class<?> type);
+
+	public abstract Function<ColumnOption, ColumnOptionType> getOptionTypeSupplier(Class<? extends ColumnOption> option);
 
 	@Override
 	@SuppressWarnings("unchecked")
@@ -25,6 +28,12 @@ public abstract class DatabaseTypeDefs implements TypeDefs {
 		typeMap.put(type, columnType);
 		columnTypeMap.put(columnType, type);
 		typeSupplier.put(type, (Function<Object, ColumnType>) columnTypeSupplier);
+	}
+
+	@Override
+	@SuppressWarnings("unchecked")
+	public <T extends ColumnOption> void addOptionDef(Class<T> type, Function<T, ColumnOptionType> optionTypeSupplier) {
+		optionSupplier.put(type, (Function<ColumnOption, ColumnOptionType>) optionTypeSupplier);
 	}
 
 	@Override
@@ -45,6 +54,16 @@ public abstract class DatabaseTypeDefs implements TypeDefs {
 	@Override
 	public Object fromColumnObject(ColumnType columnObj) {
 		return columnObj.toType();
+	}
+
+	@Override
+	public ColumnOptionType toColumnOptionType(ColumnOption option) {
+		return optionSupplier.get(option.getClass()).apply(option);
+	}
+
+	@Override
+	public ColumnOption fromColumnOptionType(ColumnOptionType optionType) {
+		return optionType.getOption();
 	}
 
 }

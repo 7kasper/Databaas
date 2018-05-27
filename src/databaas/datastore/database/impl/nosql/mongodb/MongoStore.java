@@ -2,6 +2,7 @@ package databaas.datastore.database.impl.nosql.mongodb;
 
 import databaas.dataplace.PlaceInfo;
 import databaas.datastore.database.impl.nosql.NosqlStore;
+import databaas.datatable.TableDef;
 import databaas.datatable.column.type.TypeDefs;
 import databaas.datatable.column.type.impl.nosql.mongodb.MongoTypeDefs;
 
@@ -25,6 +26,11 @@ public class MongoStore extends NosqlStore {
 
 	@Override
 	public boolean validate() {
+		return false;
+	}
+
+	@Override
+	public boolean createTable(TableDef table) {
 		return false;
 	}
 

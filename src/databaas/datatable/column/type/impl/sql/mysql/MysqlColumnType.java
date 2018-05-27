@@ -1,5 +1,7 @@
 package databaas.datatable.column.type.impl.sql.mysql;
 
-public class MysqlColumnType {
+import databaas.datatable.column.type.impl.sql.SqlColumnType;
+
+public abstract class MysqlColumnType extends SqlColumnType {
 
 }

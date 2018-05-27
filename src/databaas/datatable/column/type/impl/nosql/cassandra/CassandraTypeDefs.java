@@ -2,6 +2,8 @@ package databaas.datatable.column.type.impl.nosql.cassandra;
 
 import java.util.function.Function;
 
+import databaas.datatable.column.option.ColumnOption;
+import databaas.datatable.column.type.ColumnOptionType;
 import databaas.datatable.column.type.ColumnType;
 import databaas.datatable.column.type.impl.DatabaseTypeDefs;
 import databaas.datatable.column.type.impl.nosql.cassandra.types.CassandraInt;
@@ -26,6 +28,10 @@ public class CassandraTypeDefs extends DatabaseTypeDefs {
 		return typeSupplier.getOrDefault(type, (obj) -> {
 			return new CassandraObject(obj);
 		});
+	}
+	@Override
+	public Function<ColumnOption, ColumnOptionType> getOptionTypeSupplier(Class<? extends ColumnOption> option) {
+		return optionSupplier.get(option);
 	}
 
 }

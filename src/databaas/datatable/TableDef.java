@@ -19,6 +19,10 @@ public class TableDef {
 	public final ColumnDef[] getColumns() {
 		return columns;
 	}
+
+	public final int getColumnLength() {
+		return columns.length;
+	}
 	
 	public final ColumnDef getColumn(int i) {
 		return columns[i];

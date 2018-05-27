@@ -30,7 +30,9 @@ public class SqliteStore extends SqlStore {
 	@Override
 	public boolean validate() {
 		try {
+			typeDefs.init();
 			exec((con) -> {});
+			return true;
 		} catch (NoPlaceException | SQLException e) {
 			DatabaasLogger.log(e, "Error while executing sql function!");
 		}
