@@ -43,13 +43,28 @@ public class DatabaseDataPlace implements DatabasePlaceInfo {
 	}
 
 	@Override
-	public DatabaseConnectPlace getAConnectPlace() throws NoPlaceException {
+	public DatabaseConnectPlace getFreeConnectPlace() throws NoPlaceException {
 		DatabaseConnectPlace place = RandomUtils.fromList(freeConnectPlaces);
 		if (place == null) {
-			throw new NoPlaceException("There is no place to connect left!");
+			throw new NoPlaceException("There is no free place to connect left!");
 		}
 		markBuzy(place);
 		return place;
+	}
+
+	@Override
+	public DatabaseConnectPlace getAConnectPlace() throws NoPlaceException {
+		DatabaseConnectPlace place = RandomUtils.fromList(buzyConnectPlaces);
+		if (place == null) {
+			place = RandomUtils.fromList(freeConnectPlaces);
+			if (place == null) {
+				throw new NoPlaceException("There is no place at all!");
+			} else {
+				return place;
+			}
+		} else {
+			return place;
+		}
 	}
 
 	@Override

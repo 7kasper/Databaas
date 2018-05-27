@@ -5,6 +5,7 @@ import java.sql.SQLException;
 import databaas.DatabaasLogger;
 import databaas.dataplace.NoPlaceException;
 import databaas.dataplace.PlaceInfo;
+import databaas.dataplace.database.impl.DatabaseConnectPlace;
 import databaas.datastore.database.impl.sql.SqlStore;
 import databaas.datatable.column.type.TypeDefs;
 import databaas.datatable.column.type.impl.sql.sqlite.SqliteTypeDefs;
@@ -20,6 +21,11 @@ public class SqliteStore extends SqlStore {
 	@Override
 	public String getType() {
 		return "SQLITE";
+	}
+
+	@Override
+	public String getJDBCurl(DatabaseConnectPlace dcp) {
+		return dcp.getUrl() + "/" +  getConnect().getPlaceName() + ".db";
 	}
 
 	@Override

@@ -26,8 +26,16 @@ public interface DatabasePlaceInfo extends PlaceInfo {
 	
 	/***
 	 * Gets a random free connect place and marks it buzy.
-	 * @return
-	 * @throws NoPlaceException 
+	 * @return the free place.
+	 * @throws NoPlaceException - when no place is actually free.
+	 */
+	public DatabaseConnectPlace getFreeConnectPlace() throws NoPlaceException;
+
+	/***
+	 * Gets a random connect place to read from.
+	 * NOTE: This may and will return non-free connect places and should only be used to read.
+	 * @return the connect place.
+	 * @throws NoPlaceException - when there's no place at all.
 	 */
 	public DatabaseConnectPlace getAConnectPlace() throws NoPlaceException;
 
