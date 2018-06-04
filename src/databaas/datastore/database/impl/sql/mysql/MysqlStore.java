@@ -2,6 +2,7 @@ package databaas.datastore.database.impl.sql.mysql;
 
 import databaas.dataplace.PlaceInfo;
 import databaas.datastore.Table;
+import databaas.dataplace.database.impl.DatabaseConnectPlace;
 import databaas.datastore.database.impl.sql.SqlStore;
 import databaas.datatable.TableDef;
 import databaas.datatable.column.type.TypeDefs;
@@ -18,6 +19,11 @@ public class MysqlStore extends SqlStore {
 	@Override
 	public String getType() {
 		return "MYSQL";
+	}
+
+	@Override
+	public String getJDBCurl(DatabaseConnectPlace dcp) {
+		return "TODO"; //TODO do.
 	}
 
 	@Override

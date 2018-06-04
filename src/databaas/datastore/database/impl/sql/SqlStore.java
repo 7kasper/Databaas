@@ -21,16 +21,14 @@ public abstract class SqlStore extends DatabaseStore {
 		super(place);
 	}
 
+	public abstract String getJDBCurl(DatabaseConnectPlace dcp);
+
 	public void exec(Consumer<Connection> func) throws NoPlaceException, SQLException {
-		DatabaseConnectPlace dcp = getConnect().getAConnectPlace();
+		DatabaseConnectPlace dcp = getConnect().getFreeConnectPlace();
 		Connection con = null;
 		StringBuilder jdbcUrl = new StringBuilder();
-		jdbcUrl.append("jdbc:").append(getType()).append(":");
-		if (getType() == "SQLITE") {
-			jdbcUrl.append(dcp.getUrl()).append(getConnect().getPlaceName()).append(".db");
-		} else {
-			//TODO MYSQL jdbc code
-		}
+		jdbcUrl.append("jdbc:").append(getType()).append(":")
+			   .append(getJDBCurl(dcp));
 		try {
 			con = DriverManager.getConnection(jdbcUrl.toString());
 			func.accept(con);
