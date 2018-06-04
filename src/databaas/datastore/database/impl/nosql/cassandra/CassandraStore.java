@@ -1,6 +1,7 @@
 package databaas.datastore.database.impl.nosql.cassandra;
 
 import databaas.dataplace.PlaceInfo;
+import databaas.datastore.Table;
 import databaas.datastore.database.impl.nosql.NosqlStore;
 import databaas.datatable.TableDef;
 import databaas.datatable.column.type.TypeDefs;
@@ -32,6 +33,11 @@ public class CassandraStore extends NosqlStore {
 	@Override
 	public boolean createTable(TableDef table) {
 		return false;
+	}
+
+	@Override
+	public Table getTable(TableDef def) {
+		return new CassandraTable(this, def);
 	}
 	
 }

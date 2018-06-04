@@ -21,11 +21,24 @@ public interface DataStore {
 	 */
 	public TypeDefs getTypeDefs();
 
+	/**
+	 * Checks if the datastore is valid.
+	 * @return true if the store is valid and in theory, ready to go.
+	 */
 	public boolean validate();
 
-	public boolean createTable(TableDef table);
-	
-	//TODO: Continue :F
-	//public void createTable
-	
+	/**
+	 * Creates a table following the specified {@link TableDef}.
+	 * @param def - the definition of the table.
+	 * @return true, if the database doesn't report something went wrong.
+	 */
+	public boolean createTable(TableDef def);
+
+	/**
+	 * Gets accesspoint to a table in the store.
+	 * @param def - the definition of the table.
+	 * @return a new {@link Table} implementation to interact with.
+	 */
+	public Table getTable(TableDef def);
+
 }

@@ -5,7 +5,9 @@ import java.sql.SQLException;
 import databaas.DatabaasLogger;
 import databaas.dataplace.NoPlaceException;
 import databaas.dataplace.PlaceInfo;
+import databaas.datastore.Table;
 import databaas.datastore.database.impl.sql.SqlStore;
+import databaas.datatable.TableDef;
 import databaas.datatable.column.type.TypeDefs;
 import databaas.datatable.column.type.impl.sql.sqlite.SqliteTypeDefs;
 
@@ -37,6 +39,11 @@ public class SqliteStore extends SqlStore {
 			DatabaasLogger.log(e, "Error while executing sql function!");
 		}
 		return false;
+	}
+
+	@Override
+	public Table getTable(TableDef def) {
+		return new SqliteTable(this, def);
 	}
 
 }
