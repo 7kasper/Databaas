@@ -30,9 +30,10 @@ public interface DataStore {
 	/**
 	 * Creates a table following the specified {@link TableDef}.
 	 * @param def - the definition of the table.
-	 * @return true, if the database doesn't report something went wrong.
+	 * @return the created {@link Table} implementation to interact with.
+	 * null, if the database doesn't report something went wrong.
 	 */
-	public boolean createTable(TableDef def);
+	public Table createTable(TableDef def);
 
 	/**
 	 * Gets accesspoint to a table in the store.

@@ -2,6 +2,7 @@ package database;
 
 import databaas.Databaas;
 import databaas.datastore.DataStore;
+import databaas.datastore.Table;
 import databaas.datatable.TableDef;
 import databaas.datatable.TableDefBuilder;
 import databaas.datatable.column.option.NotNullOption;
@@ -37,7 +38,8 @@ public class TableTests extends TestCase {
 	
 	public void testSqliteTable() {
 		assertTrue(sqlitestore.validate());
-		assertTrue(sqlitestore.createTable(meepTableDef));
+		Table meepTable = sqlitestore.createTable(meepTableDef);
+		assertNotNull(meepTable);
 	}
 
 }

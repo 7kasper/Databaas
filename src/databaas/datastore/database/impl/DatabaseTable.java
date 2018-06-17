@@ -24,9 +24,4 @@ public abstract class DatabaseTable implements Table {
 		return store;
 	}
 
-	@Override
-	public boolean create() {
-		return store.createTable(def);
-	}
-
 }

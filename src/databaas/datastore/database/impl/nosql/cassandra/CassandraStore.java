@@ -31,8 +31,8 @@ public class CassandraStore extends NosqlStore {
 	}
 
 	@Override
-	public boolean createTable(TableDef table) {
-		return false;
+	public Table createTable(TableDef table) {
+		return null;
 	}
 
 	@Override

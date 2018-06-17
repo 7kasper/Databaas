@@ -8,6 +8,4 @@ public interface Table {
 
 	public DataStore getStore();
 
-	public boolean create();
-
 }
