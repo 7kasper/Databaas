@@ -1,11 +1,13 @@
 package databaas.datastore.database.impl.nosql.mongodb;
 
+import databaas.datadef.column.type.TypeDefs;
+import databaas.datadef.column.type.impl.nosql.mongodb.MongoTypeDefs;
+import databaas.datadef.table.TableDef;
+import databaas.dataplace.NoPlaceException;
+import databaas.dataplace.PlaceException;
 import databaas.dataplace.PlaceInfo;
 import databaas.datastore.Table;
 import databaas.datastore.database.impl.nosql.NosqlStore;
-import databaas.datatable.TableDef;
-import databaas.datatable.column.type.TypeDefs;
-import databaas.datatable.column.type.impl.nosql.mongodb.MongoTypeDefs;
 
 public class MongoStore extends NosqlStore {
 
@@ -26,7 +28,7 @@ public class MongoStore extends NosqlStore {
 	}
 
 	@Override
-	public boolean validate() {
+	public boolean setup() {
 		return false;
 	}
 
@@ -38,6 +40,11 @@ public class MongoStore extends NosqlStore {
 	@Override
 	public Table getTable(TableDef def) {
 		return new MongoTable(this, def);
+	}
+
+	@Override
+	public void engage() throws NoPlaceException, PlaceException {
+		
 	}
 
 }

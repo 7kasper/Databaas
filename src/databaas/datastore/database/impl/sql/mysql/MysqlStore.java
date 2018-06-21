@@ -1,12 +1,12 @@
 package databaas.datastore.database.impl.sql.mysql;
 
+import databaas.datadef.column.type.TypeDefs;
+import databaas.datadef.column.type.impl.sql.mysql.MysqlTypeDefs;
+import databaas.datadef.table.TableDef;
 import databaas.dataplace.PlaceInfo;
 import databaas.datastore.Table;
 import databaas.dataplace.database.impl.DatabaseConnectPlace;
 import databaas.datastore.database.impl.sql.SqlStore;
-import databaas.datatable.TableDef;
-import databaas.datatable.column.type.TypeDefs;
-import databaas.datatable.column.type.impl.sql.mysql.MysqlTypeDefs;
 
 public class MysqlStore extends SqlStore {
 
@@ -32,7 +32,7 @@ public class MysqlStore extends SqlStore {
 	}
 
 	@Override
-	public boolean validate() {
+	public boolean setup() {
 		return false;
 	}
 

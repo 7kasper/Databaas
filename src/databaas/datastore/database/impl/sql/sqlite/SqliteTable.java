@@ -1,7 +1,7 @@
 package databaas.datastore.database.impl.sql.sqlite;
 
+import databaas.datadef.table.TableDef;
 import databaas.datastore.database.impl.sql.SqlTable;
-import databaas.datatable.TableDef;
 
 public class SqliteTable extends SqlTable {
 

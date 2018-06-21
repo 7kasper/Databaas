@@ -1,13 +1,13 @@
 package database;
 
 import databaas.Databaas;
+import databaas.datadef.column.option.NotNullOption;
+import databaas.datadef.column.option.PrimaryKeyOption;
+import databaas.datadef.column.type.impl.nosql.cassandra.types.CassandraString;
+import databaas.datadef.table.TableDef;
+import databaas.datadef.table.TableDefBuilder;
 import databaas.datastore.DataStore;
 import databaas.datastore.Table;
-import databaas.datatable.TableDef;
-import databaas.datatable.TableDefBuilder;
-import databaas.datatable.column.option.NotNullOption;
-import databaas.datatable.column.option.PrimaryKeyOption;
-import databaas.datatable.column.type.impl.nosql.cassandra.types.CassandraString;
 import database.util.TestUtils;
 import databaas.dataplace.database.impl.DatabaseConnectPlace;
 import databaas.dataplace.database.impl.DatabaseDataPlace;
@@ -37,9 +37,10 @@ public class TableTests extends TestCase {
 	DataStore sqlitestore = Databaas.openStore("SQLITE", new DatabaseDataPlace("TestDB", new DatabaseConnectPlace(TestUtils.getSqliteTestDir().getPath())));
 	
 	public void testSqliteTable() {
-		assertTrue(sqlitestore.validate());
+		assertTrue(sqlitestore.setup());
 		Table meepTable = sqlitestore.createTable(meepTableDef);
 		assertNotNull(meepTable);
+		//meepTable.get();
 	}
 
 }

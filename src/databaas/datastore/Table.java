@@ -1,6 +1,6 @@
 package databaas.datastore;
 
-import databaas.datatable.TableDef;
+import databaas.datadef.table.TableDef;
 
 public interface Table {
 

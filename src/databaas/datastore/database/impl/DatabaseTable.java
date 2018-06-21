@@ -1,8 +1,8 @@
 package databaas.datastore.database.impl;
 
+import databaas.datadef.table.TableDef;
 import databaas.datastore.DataStore;
 import databaas.datastore.Table;
-import databaas.datatable.TableDef;
 
 public abstract class DatabaseTable implements Table {
 

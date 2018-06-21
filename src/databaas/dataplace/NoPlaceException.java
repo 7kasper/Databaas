@@ -1,7 +1,8 @@
 package databaas.dataplace;
 
 public class NoPlaceException extends Exception {
-	private static final long serialVersionUID = 3600231859488132002L;
+
+	private static final long serialVersionUID = 1L;
 
 	public NoPlaceException() { 
 		super();

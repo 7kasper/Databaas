@@ -1,7 +1,7 @@
 package databaas.datastore.database.impl.sql;
 
+import databaas.datadef.table.TableDef;
 import databaas.datastore.database.impl.DatabaseTable;
-import databaas.datatable.TableDef;
 
 public abstract class SqlTable extends DatabaseTable {
 

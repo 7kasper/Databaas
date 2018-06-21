@@ -1,7 +1,7 @@
 package databaas.datastore.database.impl.sql.mysql;
 
+import databaas.datadef.table.TableDef;
 import databaas.datastore.database.impl.sql.SqlTable;
-import databaas.datatable.TableDef;
 
 public class MysqlTable extends SqlTable {
 

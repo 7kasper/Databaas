@@ -1,7 +1,7 @@
 package databaas.datastore.database.impl.nosql;
 
+import databaas.datadef.table.TableDef;
 import databaas.datastore.database.impl.DatabaseTable;
-import databaas.datatable.TableDef;
 
 public abstract class NosqlTable extends DatabaseTable {
 

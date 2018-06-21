@@ -1,12 +1,15 @@
 package databaas.datastore.database.impl.sql.sqlite;
 
+import databaas.DatabaasLogger;
+import databaas.datadef.column.type.TypeDefs;
+import databaas.datadef.column.type.impl.sql.sqlite.SqliteTypeDefs;
+import databaas.datadef.table.TableDef;
+import databaas.dataplace.PlaceException;
+import databaas.dataplace.NoPlaceException;
 import databaas.dataplace.PlaceInfo;
 import databaas.datastore.Table;
 import databaas.dataplace.database.impl.DatabaseConnectPlace;
 import databaas.datastore.database.impl.sql.SqlStore;
-import databaas.datatable.TableDef;
-import databaas.datatable.column.type.TypeDefs;
-import databaas.datatable.column.type.impl.sql.sqlite.SqliteTypeDefs;
 
 public class SqliteStore extends SqlStore {
 	
@@ -32,9 +35,15 @@ public class SqliteStore extends SqlStore {
 	}
 
 	@Override
-	public boolean validate() {
+	public boolean setup() {
 		typeDefs.init();
-		return exec(null);
+		try {
+			engage();
+		} catch (NoPlaceException | PlaceException e) {
+			DatabaasLogger.log(e, "Error while validating store!");
+			return false;
+		}
+		return true;
 	}
 
 	@Override

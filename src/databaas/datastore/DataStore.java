@@ -1,8 +1,10 @@
 package databaas.datastore;
 
+import databaas.dataplace.PlaceException;
+import databaas.datadef.column.type.TypeDefs;
+import databaas.datadef.table.TableDef;
+import databaas.dataplace.NoPlaceException;
 import databaas.dataplace.PlaceInfo;
-import databaas.datatable.TableDef;
-import databaas.datatable.column.type.TypeDefs;
 
 public interface DataStore {
 	
@@ -16,16 +18,23 @@ public interface DataStore {
 	 */
 	public PlaceInfo getConnect();
 	
-	/*
+	/**
 	 * @return the TypeDefs belonging to this DataStore.
 	 */
 	public TypeDefs getTypeDefs();
 
 	/**
-	 * Checks if the datastore is valid.
+	 * Engages the datastore.
+	 * @throws NoPlaceException - When there is no place to connect to.
+	 * @throws PlaceException - When the store doesn't want to work with us.
+	 */
+	public void engage() throws NoPlaceException, PlaceException;
+
+	/**
+	 * Sets up the datastore and checks if it is valid.
 	 * @return true if the store is valid and in theory, ready to go.
 	 */
-	public boolean validate();
+	public boolean setup();
 
 	/**
 	 * Creates a table following the specified {@link TableDef}.
