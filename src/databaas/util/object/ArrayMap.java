@@ -546,6 +546,57 @@ public class ArrayMap<K, V> extends AbstractMap<K,V> implements Map<K, V>, Clone
 	}
 
 	/**
+	 * <p>
+	 * Returns a view of the portion of this map between the specified
+	 * {@code fromIndex}, inclusive, and {@code toIndex}, exclusive. (If
+	 * {@code fromIndex} and {@code toIndex} are equal, the returned list is empty.)
+	 * The returned map is backed by this map, so non-structural changes in the
+	 * returned map are reflected in this map, and vice-versa. The returned map does
+	 * not support removing operations, only changes in values are accepted.
+	 * </p>
+	 *
+	 * @param fromIndex
+	 *            low endpoint (inclusive) of the subMap
+	 * @param toIndex
+	 *            high endpoint (exclusive) of the subMap
+	 * @return a view of the specified range within this map.
+	 * @throws IndexOutOfBoundsException
+	 *             - for an illegal endpoint index value (fromIndex < 0 || toIndex >
+	 *             size || fromIndex > toIndex)
+	 */
+	public Map<K, V> subMap(int fromIndex, int toIndex) {
+		if (fromIndex < 0 || toIndex > size || fromIndex > toIndex) {
+			throw new IndexOutOfBoundsException();
+		}
+		ArrayMap<K, V> sub = new ArrayMap<>();
+		for (int i = fromIndex; i < toIndex; i++) {
+			Entry<K, V> entry = table[i];
+			sub.put(entry.getKey(), entry.getValue());
+		}
+		return sub;
+	}
+
+	/**
+	 * Removes all entries from index for a length of length.
+	 * 
+	 * @param index
+	 *            from where to start removing (inclusive)
+	 * @param length
+	 *            how many entries to remove.
+	 * @throws IndexOutOfBoundsException
+	 *             - for an illegal endpoint index value (index < 0 || length <
+	 *             0 || length > size)
+	 */
+	public void removeFrom(int index, int length) {
+		if (index < 0 || length < 0 || length > size) {
+			throw new IndexOutOfBoundsException();
+		}
+		for (int i = 0; i < length; i++) {
+			remove(index);
+		}
+	}
+
+	/**
 	 * Removes all of the mappings from this map. The map will be empty after this
 	 * call returns and its size will be reset.
 	 */
